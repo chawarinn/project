@@ -95,9 +95,9 @@ export class VoteComponent implements OnInit{
           });
       } else if (check == 2) {
         //กรณี ฺB ชนะ
-        const RA = K * (0 - EA);
+        const RA = K * (1 - EA);
         console.log(RA);
-        const RB = K * (1 - EB);
+        const RB = K * (0 - EB);
         console.log(RB);
         this.http.post(url + '/win', {
           photoID: WinPid,
@@ -114,13 +114,12 @@ export class VoteComponent implements OnInit{
             console.log(data);
           });
       }
-  
-      // Disable voting for 3 seconds
+
       this.canClick = false;
       setTimeout(() => {
         this.loadDataAsync(); 
         this.canClick = true;
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 3000);
     }
   }
 
