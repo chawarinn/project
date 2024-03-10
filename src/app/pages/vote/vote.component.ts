@@ -26,6 +26,8 @@ export class VoteComponent implements OnInit{
   image2: any;
   score1: any = 0;
   score2: any = 0;
+  showPopup: boolean = false;
+  countdown : any;
 
   constructor( private location : Location,private http:HttpClient,private voteService: VoteService,private photoService: PhotoService, private activatedRoute: ActivatedRoute,private constant : Constants) {
   }
@@ -114,12 +116,18 @@ export class VoteComponent implements OnInit{
             console.log(data);
           });
       }
-
+      this.showPopup = true;
       this.canClick = false;
-      setTimeout(() => {
-        this.loadDataAsync(); 
-        this.canClick = true;
-      }, 3000);
+      this.countdown = 3; // เซ็ตค่าเวลานับถอยหลัง
+      const intervalId = setInterval(() => {
+        this.countdown--;
+        if (this.countdown === 0) {
+          clearInterval(intervalId); // หยุดการนับถอยหลังเมื่อถึง 0
+          this.showPopup = false;
+          this.loadDataAsync();
+          this.canClick = true;
+        }
+      }, 1000);
     }
   }
 
