@@ -8,6 +8,7 @@ import { ImageModel } from '../../model/project_get';
 import { VoteService } from '../../services/vote.service';
 import { PhotoService } from '../../services/api/photo.service';
 import { ActivatedRoute, RouterOutlet,RouterLink } from '@angular/router';
+import { Constants } from '../../config/constans';
 @Component({
   selector: 'app-vote',
   standalone: true,
@@ -26,7 +27,7 @@ export class VoteComponent implements OnInit{
   score1: any = 0;
   score2: any = 0;
 
-  constructor( private location : Location,private http:HttpClient,private voteService: VoteService,private photoService: PhotoService, private activatedRoute: ActivatedRoute) {
+  constructor( private location : Location,private http:HttpClient,private voteService: VoteService,private photoService: PhotoService, private activatedRoute: ActivatedRoute,private constant : Constants) {
   }
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -66,7 +67,7 @@ export class VoteComponent implements OnInit{
       const EA = 1 / (1 + 10 ** ((this.score2 - this.score1) / 400));
       const EB = 1 / (1 + 10 ** ((this.score1 - this.score2) / 400));      
   
-      const url = `http://localhost:3000/vote`;
+      const url = this.constant.API_ENDPOINT+`/vote`;
       console.log('คะแนนของภาพที่ 1: ', this.score1);
       console.log('คะแนนของภาพที่ 2: ', this.score2);
 

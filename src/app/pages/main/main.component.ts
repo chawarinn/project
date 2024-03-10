@@ -4,6 +4,7 @@ import { CommonModule,Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import { ImageModel } from '../../model/project_get';
+import { Constants } from '../../config/constans';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +19,7 @@ export class MainComponent {
   uid: any;
   photoData: ImageModel[] = [];
 
-  constructor( private location : Location,private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor( private location : Location,private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router,private constant : Constants) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.uid = params['uid'];
     });

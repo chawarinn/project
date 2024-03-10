@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet,RouterLink } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
+import { Constants } from '../../config/constans';
 
 @Component({
   selector: 'app-owerank',
@@ -16,7 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './owerank.component.scss'
 })
 export class OwerankComponent {
-  constructor( private location : Location) {
+  constructor( private location : Location,private constant : Constants) {
   }
   goback(): void{
     this.location.back();
