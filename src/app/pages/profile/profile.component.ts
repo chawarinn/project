@@ -8,17 +8,16 @@ import { User } from '../../model/project_get';
 import { Constants } from '../../config/constans';
 
 @Component({
-  selector: 'app-editprofile',
+  selector: 'app-profile',
   standalone: true,
   imports: [CommonModule,
     RouterOutlet,
     RouterLink,
     MatButtonModule],
-  templateUrl: './editprofile.component.html',
-  styleUrl: './editprofile.component.scss'
+  templateUrl: './profile.component.html',
+  styleUrl: './profile.component.scss'
 })
-export class EditprofileComponent {
-
+export class ProfileComponent {
   uid: any;
   photoData: ImageModel[] = [];
   userData: User[] = [];
@@ -44,5 +43,8 @@ export class EditprofileComponent {
   }
   goback(): void{
     this.location.back();
+  }
+  addPhoto(){
+    
   }
 }

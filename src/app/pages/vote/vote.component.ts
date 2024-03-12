@@ -97,20 +97,20 @@ export class VoteComponent implements OnInit{
           });
       } else if (check == 2) {
         //กรณี ฺB ชนะ
-        const RA = K * (1 - EA);
+        const RA = K * (0 - EA);
         console.log(RA);
-        const RB = K * (0 - EB);
+        const RB = K * (1 - EB);
         console.log(RB);
         this.http.post(url + '/win', {
           photoID: WinPid,
-            score: RB,
+            score: RA,
           })
           .subscribe((data: any) => {
             console.log(data);
           });
         this.http.post(url + '/lose', {
           photoID: LosePid,
-            score: RA,
+            score: RB,
           })
           .subscribe((data: any) => {
             console.log(data);
