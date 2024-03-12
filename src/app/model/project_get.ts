@@ -14,3 +14,10 @@ export interface User {
     email:    string;
     password: string;
 }
+export interface Rank {
+    rankID:  number;
+    photoID: number;
+    ranking: number;
+    score:   number;
+    date:    number;
+}

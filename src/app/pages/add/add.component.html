@@ -30,6 +30,7 @@
               <!-- ช่องกรอกข้อมูล -->
               <div style="display: flex; flex-direction: column;">
                 <input matInput [(ngModel)]="username" type="text" placeholder="{{user.username}}" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
+                <input matInput [(ngModel)]="avatar" type="text" placeholder="Update Avatar" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
                 <input matInput [(ngModel)]="email" type="email" placeholder="{{user.email}}" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
                 <input matInput [(ngModel)]="password" type="password" placeholder="Password" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
                 <input matInput [(ngModel)]="confirmpassword" type="password" placeholder="Confirm Password" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
@@ -40,12 +41,20 @@
               <!-- ปุ่ม Save Changes -->
               <button (click)="editProfile()" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Save Changes</button>
             </div>
+                    <!-- <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: column;">
+              <input matInput [(ngModel)]="photo" type="text" placeholder=" " style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
+              <input matInput [(ngModel)]="name_playlist" type="text" placeholder="Update Avatar" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px; width: 300px;">
+            </div>
+            <button (click)="editProfile()" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Save Changes</button>
+            </div> -->
           </div>
         </ng-container>
       </ng-container>
       <div style="text-align: start; margin-left: 300px; font-size:22px; margin-top: 10px; margin-bottom: 20px;">
         <span>Playlist</span>
       </div>
+      
       <!-- รายการรูปภาพและชื่อ playlist -->
       <div style="display: flex; flex-wrap: wrap; justify-content: center;">
         <ng-container *ngFor="let photo of photoData; let i = index;">

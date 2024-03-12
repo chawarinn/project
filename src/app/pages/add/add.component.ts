@@ -31,6 +31,9 @@ export class AddComponent {
   email: string = '';
   password: string = '';
   confirmpassword: string = '';
+  avatar : any = '';
+  photo : any = '';
+  name_playlist : any = '';
 
   constructor( private location : Location,private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router,private constant : Constants) {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -72,28 +75,50 @@ export class AddComponent {
 //   });
 // }
 passwordMismatch: boolean = false;
-editProfile() {
+// editProfile() {
 
+//   if (this.password !== this.confirmpassword) {
+//     // alert("Passwords do not match.");
+//     // return; 
+//     this.passwordMismatch = true;
+//       return;
+//   }
+//   this.passwordMismatch = false;
+//   const body = {
+//     username: this.username || undefined,
+//     email: this.email || undefined,
+//     password: this.password || undefined
+//   };
+
+//   const url = this.constant.API_ENDPOINT + "/users/edit/" + this.uid;
+
+//   this.http.put(url, body).subscribe((response) => {
+//     console.log(response);
+//     alert("update successfully");
+//     return;
+//   });
+// }
+editProfile() {
   if (this.password !== this.confirmpassword) {
-    // alert("Passwords do not match.");
-    // return; 
     this.passwordMismatch = true;
-      return;
+    return;
   }
+
   this.passwordMismatch = false;
   const body = {
     username: this.username || undefined,
+    avatar: this.avatar || undefined,
     email: this.email || undefined,
     password: this.password || undefined
   };
 
-  const url = this.constant.API_ENDPOINT + "/users/edit/" + this.uid;
+  const url = `${this.constant.API_ENDPOINT}/users/edit/${this.uid}`;
 
   this.http.put(url, body).subscribe((response) => {
     console.log(response);
-    alert("update successfully");
-    return;
+    alert("Update successfully");
   });
 }
+
 
 }
