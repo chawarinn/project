@@ -5,7 +5,7 @@
 </div>
 
 <div style="display: flex; flex-direction: column; height: 100vh; overflow-y: scroll;">
-    <div style="margin-left: 120px; margin-right: 120px;">
+    <div style="margin-right: 50pc;">
         <button mat-button (click)="goback()">
             <span style="font-size: 25px; padding: 5px; color: yellow;"> < BACK</span>
         </button>
@@ -18,9 +18,9 @@
             <ng-container *ngFor="let photo of photoData let i = index">
                 <div *ngIf="photo.photoID == pid">
                     <div class="container">
-                        <div style="display: flex; flex-direction: row; margin-top: 2%;">
-                            <div style="display: flex; flex-direction: column;">
-                                <img width="350px" height="450px" [src]="photo.photo_url" style="border-radius: 10px;">
+                        <div style="display: flex; flex-direction: row; margin-top: 7%;">
+                            <div class="i" style="display: flex; flex-direction: column; margin-top: 5%; box-shadow: 0 0 20px 5px rgba(160, 209, 249, 0.865); ">
+                                <img  width="350px" height="450px" [src]="photo.photo_url" style="border-radius: 10px;">
                             </div>
 
                             <div style="display: flex; flex-direction: column;">
@@ -29,11 +29,11 @@
                                         <div class="data-rank">
                                             <div class="in-data-rank">
                                                 <span>อันดับปัจจุบัน</span>
-                                                <span>{{  i + 1  }}</span>
+                                                <span style="margin-left: 1.75pc;">{{  i + 1  }}</span>
                                             </div>
                                             <div class="in-data-rank">
                                                 <span>อันดับก่อนหน้า</span>
-                                                <span>{{ rank.ranking }}</span>
+                                                <span style="margin-left: 1.25pc;">{{ rank.ranking }}</span>
                                             </div>
                                             <div class="in-data-rank">
                                                 <span>สรุปผล</span>
@@ -48,7 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div style="display: flex; justify-content: center;margin-top: 2%;">
+                                    <div style="display: flex; justify-content: center;margin-top: 2%; margin-left: 5pc; background-color: rgba(130, 122, 122, 0.608); width: 500px ;height: 400px;;">
                                         <div class="data-graph">
                                             <p-chart type="line" [data]="day" [options]="score"></p-chart>
                                         </div>
