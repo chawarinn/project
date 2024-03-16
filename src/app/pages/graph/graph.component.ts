@@ -81,7 +81,6 @@ export class GraphComponent implements OnInit {
     }
     
     console.log(data7dayResponse);
-    
     // โหลดข้อมูลกราฟ
     this.loadGraph();
   }

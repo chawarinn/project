@@ -49,7 +49,6 @@ export class MyrankComponent{
 
   async loadPreviousDayRankAsync() {
     const url = this.constant.API_ENDPOINT;
-    
     this.http.get(url + '/rank/day').subscribe((data: any) => {
       this.rankData = data;
     });
