@@ -45,3 +45,14 @@
     height: calc(100vh - 50px);
     padding-bottom: 100px;
 }
+.icon-up::before {
+    content: "\25B2"; /* สัญลักษณ์ลูกศรขึ้น */
+  }
+  
+  .icon-down::before {
+    content: "\25BC"; /* สัญลักษณ์ลูกศรลง */
+  }
+  
+  .icon-zero::before {
+    content: "-"; /* สัญลักษณ์ขีดลบ */
+  }

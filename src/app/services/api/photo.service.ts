@@ -22,4 +22,14 @@ export class PhotoService {
     console.log(url);
     return response as any[];
   }
+  public async UploadPosts(userID?:any,formData?:any){
+    let url = '';
+    if(userID){
+      url = this.constants.API_ENDPOINT + '/photo/' + userID;
+    }else{
+      console.log("UPLOAD FAIL...");  
+    }
+    const response = await lastValueFrom(this.http.post(url,formData));
+    return response as any[];
+  }
 }

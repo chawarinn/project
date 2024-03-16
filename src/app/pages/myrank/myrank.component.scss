@@ -130,4 +130,9 @@
     margin-bottom: 10px; /* เพิ่ม margin ด้านล่างเพื่อให้มีระยะห่างระหว่างแต่ละ user */
     text-align: center;
 }
+canvas {
+  max-width: 600px;
+  max-height: 400px;
+  margin: auto;
+}
   

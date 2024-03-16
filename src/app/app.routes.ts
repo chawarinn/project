@@ -8,6 +8,7 @@ import { OweComponent } from './pages/owe/owe.component';
 import { OwerankComponent } from './pages/owerank/owerank.component';
 import { ToptenComponent } from './pages/topten/topten.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { GraphComponent } from './pages/graph/graph.component';
 
 export const routes: Routes = [
     {path: 'main', component : MainComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: 'topten', component : ToptenComponent},
     {path: 'add', component : AddComponent},  
     {path: 'owe', component : OweComponent},
-    {path: 'owerank', component : OwerankComponent}
-    // ng g c pages/profile --skip-tests
+    {path: 'owerank', component : OwerankComponent},
+    {path: 'graph', component : GraphComponent}
+    // ng g c pages/graph --skip-tests
 ]

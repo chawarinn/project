@@ -1,7 +1,6 @@
 import { CommonModule,Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Rank } from '../../model/project_get';
 import {MatButtonModule} from '@angular/material/button';
 import { ActivatedRoute, Router, RouterOutlet,RouterLink } from '@angular/router';
 import { Constants } from '../../config/constans';
@@ -44,11 +43,17 @@ export class ToptenComponent {
 
   async loadPreviousDayRankAsync() {
     const url = this.constant.API_ENDPOINT;
-    this.http.get(url + '/photo/rank/latest').subscribe((data: any) => {
+    
+    this.http.get(url + '/rank/day').subscribe((data: any) => {
       this.rankData = data;
     });
     console.log(this.rankData);
     
+}
+calculateRankDifference(photoID: number, ranking: number): number {
+  const currentRank = this.photoData.findIndex(photo => photo.photoID === photoID);
+  const rankDifference = ranking - (currentRank + 1);
+  return rankDifference;
 }
 
   goback(): void {

@@ -21,3 +21,7 @@ export interface Rank {
     score:   number;
     date:    number;
 }
+export interface Row {
+    affected_row: number;
+    last_idx:     number;
+}

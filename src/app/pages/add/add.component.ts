@@ -9,6 +9,7 @@ import { ImageModel } from '../../model/project_get';
 import { User } from '../../model/project_get';
 import { Constants } from '../../config/constans';
 import { lastValueFrom } from 'rxjs';
+import { PhotoService } from '../../services/api/photo.service';
 
 @Component({
   selector: 'app-add',
@@ -31,94 +32,66 @@ export class AddComponent {
   email: string = '';
   password: string = '';
   confirmpassword: string = '';
-  avatar : any = '';
-  photo : any = '';
-  name_playlist : any = '';
+  file? : File;
+  responseRow : any;
 
-  constructor( private location : Location,private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router,private constant : Constants) {
+  constructor( private location : Location,private http:HttpClient, private activatedRoute: ActivatedRoute, private router: Router,private constant : Constants,private photoService: PhotoService) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.uid = params['uid'];
     });
     console.log(this.uid);
+    
+    
   }
   ngOnInit(): void {
     this.loadDataAsync(); 
-    }
-    async loadDataAsync(){ 
-      const url = this.constant.API_ENDPOINT;
-     
-      this.http.get(url+"/photo", {}).subscribe((data:any)=>{
-        this.photoData = data;
-      });  
-      this.http.get(url+"/users", {}).subscribe((data:any)=>{
-        this.userData = data;
-      });  
+  }
+  async loadDataAsync(){ 
+    const url = this.constant.API_ENDPOINT;
+    this.http.get(url+"/photo", {}).subscribe((data:any)=>{
+      this.photoData = data;
+      console.log(this.photoData);
+    });  
+    this.http.get(url+"/users", {}).subscribe((data:any)=>{
+      this.userData = data;
+    });
   }
   goback(): void{
     this.location.back();
   }
-  addPhoto(){
-}
-// editProfile() {
-//   const body = {
-//     username: this.username || undefined, // เลือกใช้ข้อมูลเก่าหากไม่มีการกรอกข้อมูลใหม่
-//     email: this.email || undefined, // เลือกใช้ข้อมูลเก่าหากไม่มีการกรอกข้อมูลใหม่
-//     password: this.password || undefined // เลือกใช้ข้อมูลเก่าหากไม่มีการกรอกข้อมูลใหม่
-//   };
-
-//   // สร้าง URL
-//   const url = this.constant.API_ENDPOINT + "/users/edit/" + this.uid;
-
-//   // ส่งคำขอ HTTP PUT
-//   this.http.put(url, body).subscribe((response) => {
-//     console.log(response);
-//   });
-// }
-passwordMismatch: boolean = false;
-// editProfile() {
-
-//   if (this.password !== this.confirmpassword) {
-//     // alert("Passwords do not match.");
-//     // return; 
-//     this.passwordMismatch = true;
-//       return;
-//   }
-//   this.passwordMismatch = false;
-//   const body = {
-//     username: this.username || undefined,
-//     email: this.email || undefined,
-//     password: this.password || undefined
-//   };
-
-//   const url = this.constant.API_ENDPOINT + "/users/edit/" + this.uid;
-
-//   this.http.put(url, body).subscribe((response) => {
-//     console.log(response);
-//     alert("update successfully");
-//     return;
-//   });
-// }
-editProfile() {
-  if (this.password !== this.confirmpassword) {
-    this.passwordMismatch = true;
-    return;
+  async onFileSelected(event: any): Promise<void> {
+    this.file = event.target.files[0];
+    if (this.file) {
+      const formData = new FormData();
+      formData.append('file',this.file);
+      this.responseRow = await this.photoService.UploadPosts(this.uid,formData);
+    }
+    this.loadDataAsync();
   }
 
+passwordMismatch: boolean = false;
+editProfile() {
+
+  if (this.password !== this.confirmpassword) {
+    // alert("Passwords do not match.");
+    // return; 
+    this.passwordMismatch = true;
+      return;
+  }
   this.passwordMismatch = false;
   const body = {
     username: this.username || undefined,
-    avatar: this.avatar || undefined,
     email: this.email || undefined,
     password: this.password || undefined
   };
 
-  const url = `${this.constant.API_ENDPOINT}/users/edit/${this.uid}`;
+  const url = this.constant.API_ENDPOINT + "/users/edit/" + this.uid;
 
   this.http.put(url, body).subscribe((response) => {
     console.log(response);
-    alert("Update successfully");
+    alert("update successfully");
+    return;
   });
 }
-
 
 }
