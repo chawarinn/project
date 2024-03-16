@@ -145,4 +145,14 @@
   .icon-zero::before {
     content: "-"; /* สัญลักษณ์ขีดลบ */
   }
+  
     
+  .graph {
+    margin-top: 100px; /* เพิ่ม margin ด้านบนเพื่อทำให้กราฟห่างออกจากข้อความ "MY RANKING" */
+  }
+  
+  .user {
+    margin-bottom: 20pc; /* เพิ่ม margin ด้านล่างเพื่อทำให้มีระยะห่างระหว่างแต่ละ user */
+  }
+ 
+  
