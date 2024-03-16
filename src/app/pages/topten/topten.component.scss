@@ -56,3 +56,23 @@
   .icon-zero::before {
     content: "-"; /* สัญลักษณ์ขีดลบ */
   }
+
+  
+  
+  .top-toolbar > div {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* จัดให้อยู่ตรงกลางตามแนวนอน */
+    align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+    margin-bottom: 10px;
+  }
+  
+  .top-toolbar > div > div {
+    flex: 1; /* ให้แต่ละส่วนขยายตามความกว้าง */
+    text-align: center; /* จัดให้เนื้อหาอยู่ตรงกลาง */
+  }
+  .image-hover:hover {
+    box-shadow: 0 0 20px rgb(208, 0, 255); /* เพิ่มเงาเมื่อมีการชี้ */
+  }
+  
+  
